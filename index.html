@@ -1,11 +1,140 @@
 <!DOCTYPE html>
-<html lang="en-US">
+  <html lang="en-US">
   <head>
-    <title>Gametime Starter Kit</title>
+    <title>Jeopardy</title>
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Homemade+Apple|Rock+Salt" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,700" rel="stylesheet">
   </head>
   <body>
-    <h1>Gametime Starter Kit</h1>
-
-    <img src="/images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    <!-- name entry -->
+    <section class="input-fields">
+      <h1>Jeopardy!</h1>
+      <form class="player-input no-submit">
+        <label for="playerName1">Enter Player 1 Name:</label>
+        <input type="text" class="name-input no-reload" name="playerName1" id="playerNameInput1" maxlength="7">
+      </form>
+      <form class="player-input no-submit">
+        <label for="playerName2">Enter Player 2 Name:</label>
+        <input type="text" class="name-input no-reload" name="playerName2" id="playerNameInput2" maxlength="7">
+      </form>
+      <form class="player-input no-submit">
+        <label for="playerName3">Enter Player 3 Name:</label>
+        <input type="text" class="name-input no-reload" name="playerName3" id="playerNameInput3" maxlength="7">
+      </form>
+      <button class="play-btn" id="playBtn">Let's play Jeopardy!</button>
+    </section>
+  <!-- question card  --> 
+    <div class="question-card" id="questionCard">
+      <section class="question-card-content">
+        <header class="card-head">
+          <span class="category-reminder">Category</span> 
+          <span id="displayPointVal">pointval</span>
+        </header>
+        <p id="displayQuestion">Question here</p>
+        <form class="no-submit">
+          <label for="playerAnswer">Type answer here:</label>
+          <input type="text" name="playerAnswer" class="no-reload" id="playerAnswer">
+        </form>
+        <button class="answer-btn">Submit Answer</button>
+        <p id="rightWrong">Feedback</p>
+      </section>
+    </div>
+  <!-- Daily Double Wager -->
+    <div class="daily-double-card" id="dailyDoubleCard">
+      <section class="daily-double-card-content">
+        <header class="card-head wager-head">
+          You've selected a Daily Double!
+        </header>
+        <span class="category-reminder">Category reminder</span>
+        <p>Enter a wager up to your total point value or double the question's value.</p>
+        <form class="no-submit">
+          <label for="wagerInput">Wager:</label>
+          <input type="text" name="wagerInput" class="no-reload" id="wagerInput">
+        </form>
+        <button class="wager-btn">Submit Wager</button>
+      </section>
+    </div>
+    <div class="round-two">
+      <section class="round-two-content">
+        <h2>Round 2 Start</h2>
+      </section>
+    </div>
+  <!-- Final wager -->
+    <div class="final-jeopardy-wager" id="finalJeopardyWager">
+      <section class="final-jeopardy-wager-content">
+        <header class="card-head">
+          Final Jeopardy!
+        </header>
+        <span class="category-reminder">Category</span>
+        <p>How much are you willing to put on the line?</p>
+        <form>
+          <label for="finalWagerInput">Wager:</label>
+          <input type="text" name="finalWagerInput" id="finalWagerInput">
+        </form> 
+        <button class="final-wager-btn">Submit Wager</button> 
+      </section>
+    </div>
+  <!-- Jeopardy Main Screen -->
+    <header class="table-top">
+      <h4>Jeopardy</h4>
+      <button id="reset-button">Reset Game</button>
+    </header>
+    <article class="game-board">
+      <table>    
+        <tr>
+          <th class="category-box" id="category-0">Cat 1</th>
+          <th class="category-box" id="category-1">Cat 2</th>
+          <th class="category-box" id="category-2">Cat 3</th>
+          <th class="category-box" id="category-3">Cat 4</th>
+        </tr>
+        <tr>
+          <td class="clue-box available-box 100" id="0">$100</td>
+          <td class="clue-box available-box 100" id="4">$100</td>
+          <td class="clue-box available-box 100" id="8">$100</td>
+          <td class="clue-box available-box 100" id="12">$100</td>
+        </tr>
+        <tr>
+          <td class="clue-box available-box 200" id="1">$200</td>
+          <td class="clue-box available-box 200" id="5">$200</td>
+          <td class="clue-box available-box 200" id="9">$200</td>
+          <td class="clue-box available-box 200" id="13">$200</td>
+        </tr>
+        <tr>
+          <td class="clue-box available-box 300" id="2">$300</td>
+          <td class="clue-box available-box 300" id="6">$300</td>
+          <td class="clue-box available-box 300" id="10">$300</td>
+          <td class="clue-box available-box 300" id="14">$300</td>
+        </tr>
+        <tr>
+          <td class="clue-box available-box 400" id="3">$400</td>
+          <td class="clue-box available-box 400" id="7">$400</td>
+          <td class="clue-box available-box 400" id="11">$400</td>
+          <td class="clue-box available-box 400" id="15">$400</td>
+        </tr>
+      </table>
+    </article>
+    <main class="podium-area">
+      <section class="podium" id="podium1">
+        <div class="avatar" id="avatar0"></div>
+        <div class="score-box" id="scoreBox0">$0</div>
+        <div class="podium-base">
+          <span class="player-name"id="playerName1">Name 1</span>
+        </div>
+      </section>
+      <section class="podium" id="podium2">
+        <div class="avatar" id="avatar1"></div>
+        <div class="score-box" id="scoreBox1">$0</div>
+        <div class="podium-base">
+          <span class="player-name" id="playerName2">Name 2</span>
+        </div>
+      </section>
+      <section class="podium" id="podium3">
+        <div class="avatar" id="avatar2"></div>
+        <div class="score-box" id="scoreBox2">$0</div>
+        <div class="podium-base">
+          <span class="player-name" id="playerName3">Name 3</span>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
